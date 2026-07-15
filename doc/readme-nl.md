@@ -6,59 +6,74 @@ Paperback is een lichtgewicht, snelle en toegankelijke e-book- en documentlezer 
 
 ## Systeemvereisten
 
-Paperback draait momenteel op Windows 10/11 en Linux. Ondersteuning voor macOS zit in de pijplijn.
+Paperback draait momenteel op Windows, macOS, iOS en Android.
 
 ## Functies
 
 * Volledig zelfstandig; er hoeft geen software op je computer te worden geïnstalleerd om te kunnen lezen.
 * Bijzonder snel, zelfs op oude hardware.
 * Eenvoudige interface met tabbladen, waarmee je zoveel documenten naast elkaar kunt openen als je wilt.
-* Bewaart je cursorpositie in elk document dat je opent.
+* Bewaart je exacte leespositie in elk document dat je opent.
 * Onthoudt desgewenst welke documenten je open had toen je het programma afsloot en herstelt ze bij de volgende start.
-* Ontworpen door een schermlezergebruiker voor schermlezergebruikers.
 * Bevat navigatiefunctionaliteit die lijkt op de bladermodus van veel schermlezers, om snel en eenvoudig door documenten te navigeren.
 * Bevat een robuust zoekvenster, met functies zoals geschiedenis en ondersteuning voor reguliere expressies.
 * Kan volledig portable worden uitgevoerd of worden geïnstalleerd met automatisch ingestelde bestandstoewijzingen.
+* Ondersteunt een enorme reeks veelvoorkomende bestandsindelingen.
+
+## Compatibiliteit met schermlezers
+
+Paperback werkt goed samen met alle belangrijke schermlezers. Er is echter één bekend probleem voor JAWS-gebruikers.
+
+### JAWS en brailleleesregels
+
+Als je JAWS met een brailleleesregel gebruikt, kan het gebeuren dat lange alinea's worden afgekapt wanneer je met de navigatietoetsen van je leesregel vooruit pant. Ook de opdracht om de huidige alinea te lezen wordt hierdoor beïnvloed. Dit is een fout in de manier waarop JAWS omgaat met het RICHEDIT50W-tekstbesturingselement, en niet iets in Paperback zelf; een fout waarvoor het bovendien behoorlijk lang duurde voordat er een oplossing opdook, gezien Vispero's enthousiasme om te reageren op problemen met opensourcesoftware.
+
+De oplossing, die uiteindelijk na maanden wachten via de JAWS-discussiegroep naar boven kwam, is om `paperback.jcf` te bewerken en "Braille Presentation and Panning" in te stellen op "Always use DOM if available". Je wilt ook "Pan Text by Paragraph" inschakelen, anders blijft je leesregel op de actieve alinea staan in plaats van door te gaan. Met beide instellingen ingesteld zou het pannen correct moeten werken.
 
 ## Momenteel ondersteunde bestandstypen
 
 Paperback ondersteunt de volgende indelingen en extensies:
 
 * CHM-helpbestanden (`.chm`)
+* DAISY-boeken (`.opf`, `.zip`)
 * EPUB-boeken (`.epub`)
 * FB2-e-books (`.fb2`)
 * HTML-documenten (`.htm`, `.html`, `.xhtml`)
 * Markdown-documenten (`.md`, `.markdown`, `.mdx`, `.mdown`, `.mdwn`, `.mkd`, `.mkdn`, `.mkdown`, `.ronn`)
-* Microsoft Word-documenten (`.docx`, `.docm`)
+* Microsoft Word-documenten (`.docx`, `.docm`, `.doc`)
+* MOBI/Kindle-boeken (`.mobi`, `.azw`, `.azw3`)
 * OpenDocument-presentaties (`.odp`, `.fodp`)
 * OpenDocument-tekstbestanden (`.odt`, `.fodt`)
 * PDF-documenten (`.pdf`)
-* PowerPoint-presentaties (`.pptx`, `.pptm`)
+* PowerPoint-presentaties (`.pptx`, `.pptm`, `.ppt`)
 * RTF-documenten (`.rtf`)
 * Platte-tekst- en logbestanden (`.txt`, `.log`)
-* XML-documenten (`.xml`)
 
 ## Sneltoetsen
 
-Paperback is ontworpen voor toetsenbord- en schermlezergericht gebruik. Hieronder staan de huidige sneltoetsen.
+Paperback is ontworpen voor toetsenbordgericht gebruik. Hieronder staan de huidige sneltoetsen.
+
+De onderstaande sneltoetsen gelden voor Windows. Waar macOS afwijkt, staat het equivalent tussen haakjes vermeld — voornamelijk omdat Ctrl+G, Ctrl+W en Alt+Left/Right op dat platform al door andere systeem- of app-conventies zijn geclaimd.
 
 ### Menu Bestand
 
 * `Ctrl+O`: Een document openen.
-* `Ctrl+F4`: Het huidige document sluiten.
-* `Ctrl+Shift+F4`: Alle geopende documenten sluiten.
+* `Ctrl+F4` (macOS: `Cmd+W`): Het huidige document sluiten.
+* `Ctrl+Shift+F4` (macOS: `Cmd+Shift+W`): Alle geopende documenten sluiten.
+* `Ctrl+Shift+T`: Het laatst gesloten document heropenen.
 * `Ctrl+R`: Het venster "Alle documenten" tonen (vanuit Recente documenten).
+* `Ctrl+Q`: Afsluiten (alleen Windows; op macOS staat dit in plaats daarvan onder het app-menu).
 
 ### Menu Ga
 
 * `Ctrl+F`: Het zoekvenster tonen.
-* `F3`: Volgende zoeken.
-* `Shift+F3`: Vorige zoeken.
-* `Ctrl+G`: Ga naar regel.
-* `Ctrl+Shift+G`: Ga naar percentage.
+* `F3` (macOS: `Cmd+G`): Volgende zoeken.
+* `Shift+F3` (macOS: `Cmd+Shift+G`): Vorige zoeken.
+* `Ctrl+G` (macOS: `Cmd+L`): Ga naar regel.
+* `Ctrl+Shift+G` (macOS: `Cmd+Shift+L`): Ga naar percentage.
 * `Ctrl+P`: Ga naar pagina (indien ondersteund door het huidige document).
-* `Alt+Left`: Terug in navigatiegeschiedenis.
-* `Alt+Right`: Vooruit in navigatiegeschiedenis.
+* `Alt+Left` (macOS: `Cmd+[`): Terug in navigatiegeschiedenis.
+* `Alt+Right` (macOS: `Cmd+]`): Vooruit in navigatiegeschiedenis.
 * `[`: Vorige sectie.
 * `]`: Volgende sectie.
 * `Shift+H`: Vorige kop.
@@ -74,9 +89,13 @@ Paperback is ontworpen voor toetsenbord- en schermlezergericht gebruik. Hieronde
 * `Ctrl+B`: Naar alle bladwijzers en notities springen.
 * `Ctrl+Alt+B`: Alleen naar bladwijzers springen.
 * `Ctrl+Alt+M`: Alleen naar notities springen.
-* `Ctrl+Shift+W`: De notitietekst op de huidige positie bekijken.
+* `Ctrl+Shift+W` (macOS: `RawCtrl+Shift+W`, d.w.z. de fysieke Control-toets in plaats van Cmd): De notitietekst op de huidige positie bekijken.
 * `Shift+K`: Vorige link.
 * `K`: Volgende link.
+* `Shift+G`: Vorige afbeelding.
+* `G`: Volgende afbeelding.
+* `Shift+F`: Vorige figuur.
+* `F`: Volgende figuur.
 * `Shift+T`: Vorige tabel.
 * `T`: Volgende tabel.
 * `Shift+S`: Vorige scheiding.
@@ -90,7 +109,7 @@ Paperback is ontworpen voor toetsenbord- en schermlezergericht gebruik. Hieronde
 
 ### Menu Extra
 
-* `Ctrl+W`: Woordenaantal van het huidige document tonen.
+* `Ctrl+W` (macOS: `RawCtrl+W`, d.w.z. de fysieke Control-toets in plaats van Cmd): Woordenaantal van het huidige document tonen.
 * `Ctrl+I`: Documentinformatie tonen.
 * `Ctrl+T`: Inhoudsopgave tonen.
 * `F7`: Elementenlijst tonen.
@@ -103,7 +122,7 @@ Paperback is ontworpen voor toetsenbord- en schermlezergericht gebruik. Hieronde
 * `Ctrl+Shift+B`: Bladwijzer in-/uitschakelen op de huidige selectie/cursor.
 * `Ctrl+Shift+N`: Bladwijzernotitie toevoegen of bewerken op de huidige selectie/cursor.
 * `Ctrl+Alt+W`: Automatische terugloop in-/uitschakelen.
-* `Ctrl+,`: Opties openen.
+* `Ctrl+,`: Opties openen (macOS: Voorkeuren, onder het app-menu).
 * `Ctrl+Shift+S`: Slaaptimer in-/uitschakelen.
 
 ### Menu Help
@@ -117,8 +136,8 @@ Paperback is ontworpen voor toetsenbord- en schermlezergericht gebruik. Hieronde
 ### Aanvullende toetsen voor de documentweergave
 
 * `Delete` / `Numpad Delete` op het tabbladelement: Het geselecteerde documenttabblad sluiten.
-* `Enter` in de documenttekst: De link op de cursor activeren, of een tabelweergave openen wanneer de cursor op een tabelmarkering staat.
-* `Shift+F10` in de documenttekst: Het contextmenu openen.
+* `Enter` of `Space` in de documenttekst: De link op de cursor activeren, of een tabelweergave openen wanneer de cursor op een tabelmarkering staat.
+* `Shift+F10` of de Menu-/Toepassingen-toets in de documenttekst: Het contextmenu openen.
 
 ## Ondersteunde talen
 
@@ -133,6 +152,8 @@ Lees onze [Vertaalgids](translating.md) om te leren hoe je kunt bijdragen.
 * Frans
 * Duits
 * Japans
+* Pools
+* Portugees (Brazilië)
 * Russisch
 * Vereenvoudigd Chinees
 * Servisch
@@ -168,6 +189,61 @@ Let op: een openbare GitHub-sponsor beschouw ik als grond voor automatische opna
 * Tyler Rodick
 
 ## Versiegeschiedenis
+
+### Versie 0.9.0
+* Een annuleerknop toegevoegd aan het venster 'update wordt uitgevoerd'.
+* Een CLI-hulpprogramma genaamd pb toegevoegd om snel elk door Paperback ondersteund formaat om te zetten naar HTML, Markdown of platte tekst.
+* Een instelbare sneltoets toegevoegd om Paperback te herstellen vanuit het systeemvak.
+* Een knop 'lokaliseren' toegevoegd aan het venster Alle documenten om ontbrekende boeken te vinden waarvan het pad zojuist is gewijzigd.
+* Een tabblad Leesbaarheid toegevoegd aan het optievenster, met de volgende opties:
+    * Automatische terugloop (verplaatst vanuit Algemeen);
+    * Tabellen inline weergeven (nieuw in deze release, zie hieronder);
+    * Lettertype;
+    * Achtergrondkleur;
+    * Regelafstand;
+    * Alinea-afstand;
+    * Letterafstand;
+    * Tekstuitlijning.
+* Een schakelaar toegevoegd om te bepalen hoe je tabellen weergegeven wilt hebben, en de weergave van tabellen in alle documenten geünificeerd.
+* Een optie 'Bron weergeven' toegevoegd om de bron van een document in een nieuw tabblad te openen, bijvoorbeeld handig voor het bewerken van Markdown.
+* De geschatte leestijd toegevoegd aan het woordenaantalvenster, evenals de mogelijkheid om je leessnelheid in te stellen zodat deze maatstaf ook echt nuttig wordt.
+* Android-ondersteuning toegevoegd!
+* iOS-ondersteuning toegevoegd!
+* macOS-ondersteuning toegevoegd!
+* Nieuwe talen toegevoegd: Nederlands, Fins en Pools.
+* Ondersteuning toegevoegd voor navigatie per container.
+* Ondersteuning toegevoegd voor lijsten, lijstitems, figuren en afbeeldingen in CHM-documenten.
+* Een menu-item voor automatische terugloop en een bijbehorende sneltoets toegevoegd.
+* Het formaat van het webweergavevenster kan nu worden aangepast en het verschijnt in een veel beter zichtbaar formaat.
+* Het export-menu-item uitgebreid zodat je naast platte tekst ook naar HTML en Markdown kunt exporteren.
+* Opgelost dat het toepassen van automatische terugloop je naar het begin van je document bracht.
+* Opgelost dat DAISY-boeken onjuiste informatie in de statusbalk toonden.
+* Opgelost dat dl-, dt- en dd-elementen geen regeleinden veroorzaakten in XHTML-documenten.
+* Opgelost dat Escape de vensters Documentinformatie en Alle documenten niet sloot.
+* Opgelost dat filepos-ankers in Mobi-boeken HTML-tags opsplitsten en rommel in de boektekst plaatsten.
+* Opgelost dat er vertraging optrad bij het naderen van het einde van het tekstveld in grote documenten.
+* Links in klassieke mobi-boeken opgelost.
+* Het parsen van RTF-documenten met niet-Latijnse tekens opgelost.
+* Opgelost dat de titelbalk niet werd bijgewerkt na het sluiten van een document vanuit het venster Alle documenten.
+* Opgelost dat Word-documenten met landspecifieke stijlnamen hun koppen niet correct weergaven.
+* Opgelost dat je geselecteerde tabblad niet correct de focus kreeg na het opnieuw starten van Paperback.
+* Als er een selectie actief is wanneer je het woordenaantalvenster opent, wordt nu getoond hoeveel woorden je hebt geselecteerd.
+* Het parsen van AZW3 aanzienlijk verbeterd.
+* Overgestapt van chmlib naar onze eigen CHM-bestandslezer, volledig in Rust.
+* Op desktop worden .paperback-bestanden niet langer geforceerd geladen bij het herstellen van documenten. In plaats daarvan wordt je om bevestiging gevraagd wanneer het bestand wordt gevonden.
+* Paperback valt nu terug op extractie van platte tekst voor onjuist getagde PDF's.
+* 'Bovenliggende map openen' zet nu de focus op het betreffende bestand in Verkenner.
+* Bij het openen van de readme wordt nu je geselecteerde taal gerespecteerd.
+* PowerPoint-documenten ondersteunen nu tabellen.
+* Het menu wordt nu correct bijgewerkt en de focus wordt op het tekstbesturingselement gezet bij het openen van help in Paperback.
+* Readme.html wordt niet langer toegevoegd aan je lijst met alle documenten wanneer het via Shift+F1 wordt geopend.
+* Het verwijderen van documenten uit het venster met recente documenten sluit nu ook hun actieve tabblad.
+* Overgeschakeld naar een veel veiligere methode van IPC op Windows.
+* De titel van het actieve document wordt nu voorgelezen bij het wisselen tussen tabbladen.
+* De updater toont nu correct de inhoud van markdown-codetags in release-opmerkingen.
+* De updater controleert nu of het gedownloade bestand niet is gemanipuleerd.
+* De webweergave wordt nu geopend op je huidige leespositie.
+* Je zoekfilter in het venster Alle documenten blijft nu behouden na het verwijderen van een document.
 
 ### Versie 0.8.5
 * Paginaondersteuning toegevoegd aan epub-boeken.
